@@ -13,6 +13,7 @@ function Login({ setUser }) {
           email: user.email,
           photo: user.photoURL,
         };
+        localStorage.setItem("user", JSON.stringify(newUser));
         setUser(newUser);
       })
       .catch((error) => {

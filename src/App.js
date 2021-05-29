@@ -11,7 +11,7 @@ import Login from "./Login";
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
 
   const getCartItems = () => {
     // onSnapshot - creates a live connection between app and db
