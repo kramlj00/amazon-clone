@@ -2,6 +2,12 @@ import React from "react";
 import styled from "styled-components";
 
 function CartItem({ id, item }) {
+  let options = [];
+
+  for (let i = 1; i < Math.max(item.quantity + 1, 20); i++) {
+    options.push(<option value={i}> Qty: {i}</option>);
+  }
+
   return (
     <Container>
       <ImageContainer>
@@ -12,7 +18,10 @@ function CartItem({ id, item }) {
           <h2>{item.name}</h2>
         </CartItemInfoTop>
         <CartItemInfoBottom>
-          <CartItemQuantityContainer>{item.quantity}</CartItemQuantityContainer>
+          <CartItemQuantityContainer>
+            <select value={item.quantity}>{options}</select>
+            {item.quantity}
+          </CartItemQuantityContainer>
           <CartItemDeleteContainer>Delete</CartItemDeleteContainer>
         </CartItemInfoBottom>
       </CartItemInfo>
@@ -43,7 +52,9 @@ const ImageContainer = styled.div`
   }
 `;
 
-const CartItemInfo = styled.div``;
+const CartItemInfo = styled.div`
+  flex-grow: 1;
+`;
 
 const CartItemInfoTop = styled.div`
   color: #007185;

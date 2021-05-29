@@ -19,7 +19,6 @@ function CartItems({ cartItems }) {
 export default CartItems;
 
 const Container = styled.div`
-  height: 300px;
   background-color: white;
   flex: 0.8;
   margin-right: 18px;
