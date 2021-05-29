@@ -11,6 +11,7 @@ import Login from "./Login";
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
+  const [user, setUser] = useState(null);
 
   const getCartItems = () => {
     // onSnapshot - creates a live connection between app and db
@@ -28,27 +29,28 @@ function App() {
     getCartItems();
   }, []);
 
-  console.log(cartItems);
+  console.log("User", user);
 
   return (
     <Router>
-      <div className="App">
-        <Header cartItems={cartItems} />
+      {/* if there is no user show Login, else show everything else*/}
+      {!user ? (
+        <Login setUser={setUser} />
+      ) : (
+        <div className="App">
+          <Header cartItems={cartItems} user={user} />
 
-        <Switch>
-          <Route path="/login">
-            <Login />
-          </Route>
+          <Switch>
+            <Route path="/cart">
+              <Cart cartItems={cartItems} />
+            </Route>
 
-          <Route path="/cart">
-            <Cart cartItems={cartItems} />
-          </Route>
-
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
-      </div>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
+        </div>
+      )}
     </Router>
   );
 }
