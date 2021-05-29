@@ -27,6 +27,7 @@ function App() {
 
   const signOut = () => {
     auth.signOut().then(() => {
+      localStorage.removeItem("user");
       setUser(null);
     });
   };
