@@ -12,6 +12,7 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
 
   const getCartItems = () => {
+    // onSnapshot - creates a live connection between app and db
     db.collection("cartItems").onSnapshot((snapshot) => {
       let tempItems = [];
       tempItems = snapshot.docs.map((doc) => ({
