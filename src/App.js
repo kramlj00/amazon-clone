@@ -6,7 +6,7 @@ import Home from "./Home";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import styled from "styled-components";
 
-import { db } from "./firebase";
+import { db, auth } from "./firebase";
 import Login from "./Login";
 
 function App() {
@@ -25,6 +25,12 @@ function App() {
     });
   };
 
+  const signOut = () => {
+    auth.signOut().then(() => {
+      setUser(null);
+    });
+  };
+
   useEffect(() => {
     getCartItems();
   }, []);
@@ -38,7 +44,7 @@ function App() {
         <Login setUser={setUser} />
       ) : (
         <div className="App">
-          <Header cartItems={cartItems} user={user} />
+          <Header cartItems={cartItems} user={user} signOut={signOut} />
 
           <Switch>
             <Route path="/cart">

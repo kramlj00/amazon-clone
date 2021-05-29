@@ -5,7 +5,7 @@ import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import { Link } from "react-router-dom";
 
-function Header({ cartItems, user }) {
+function Header({ cartItems, user, signOut }) {
   const getCount = () => {
     let count = 0;
     // Loop through all cart items
@@ -46,7 +46,7 @@ function Header({ cartItems, user }) {
       </HeaderSearch>
 
       <HeaderNavItems>
-        <HeaderOption>
+        <HeaderOption onClick={signOut}>
           <OptionLineOne>Hello, {user.name}</OptionLineOne>
           <OptionLineTwo>Account & Lists</OptionLineTwo>
         </HeaderOption>
@@ -132,6 +132,7 @@ const HeaderNavItems = styled.div`
 const HeaderOption = styled.div`
   //TRouBLe
   padding: 10px 9px 10px 9px;
+  cursor: pointer;
 `;
 
 const HeaderOptionCart = styled.div`
