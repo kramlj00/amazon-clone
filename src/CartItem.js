@@ -20,7 +20,6 @@ function CartItem({ id, item }) {
         <CartItemInfoBottom>
           <CartItemQuantityContainer>
             <select value={item.quantity}>{options}</select>
-            {item.quantity}
           </CartItemQuantityContainer>
           <CartItemDeleteContainer>Delete</CartItemDeleteContainer>
         </CartItemInfoBottom>
@@ -36,6 +35,7 @@ const Container = styled.div`
   paddingtop: 12px;
   paddingbottom: 12px;
   display: flex;
+  border-bottom: 1px solid #ddd;
 `;
 
 const ImageContainer = styled.div`
@@ -65,9 +65,20 @@ const CartItemInfoTop = styled.div`
 
 const CartItemInfoBottom = styled.div`
   display: flex;
+  align-items: center;
 `;
 
-const CartItemQuantityContainer = styled.div``;
+const CartItemQuantityContainer = styled.div`
+select {
+  border-radius: 7px;
+  background-color: #F0F2F2; 
+  padding: 8px;
+  box-shadow: 0 2px 5px rgba(15,17,17,.15);
+
+  :focus {
+      outline: none;
+  }
+`;
 
 const CartItemDeleteContainer = styled.div`
   color: #007185;
